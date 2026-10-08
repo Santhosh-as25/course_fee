@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourceFee</title>
+    <script>
+        function updateFee() {
+            const courseSelect = document.getElementById('course');
+            const btechBranchSelect = document.getElementById('btechBranch');
+            const bcomBranchSelect = document.getElementById('bcomBranch');
+            const feeInput = document.getElementById('fee');
+            const course = courseSelect.value;
+            let fee = 0;
+
+            if (course === 'btech') {
+                const branch = btechBranchSelect.value;
+                if (branch === 'cse') {
+                    fee = 130000;
+                } else if (branch === 'ece') {
+                    fee = 90000;
+                }
+            } else if (course === 'bcom') {
+                const branch = bcomBranchSelect.value;
+                if (branch === 'general') {
+                    fee = 80000;
+                } else if (branch === 'accounting') {
+                    fee = 80500;
+                }
+            }
+
+            feeInput.value = fee;
+        }
+
+       
+    </script>
+</head>
+<body>
+    <label for="course">Course:</label>
+    <select id="course" >
+        <option value="btech">Btech</option>
+        <option value="bcom">Bcom</option>
+    </select>
+
+   
+        <label for="btechBranch">Branch for Btech:</label>
+        <select id="btechBranch" onchange="updateFee()">
+            <option value="cse">CSE</option>
+            <option value="ece">ECE</option>
+        </select>
+    
+
+    
+        <label for="bcomBranch">Branch for Bcom:</label>
+        <select id="bcomBranch" onchange="updateFee()">
+            <option value="general">GENERAL</option>
+            <option value="accounting">ACCOUNTING</option>
+        </select>
+    
+
+    <label for="fee">FEE</label>
+    <input type="number" id="fee" readonly>
+</body>
+</html>
